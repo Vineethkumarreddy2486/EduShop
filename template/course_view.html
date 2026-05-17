@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: linear-gradient(rgb(0, 18, 0), black);
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden auto;
+            padding-top: 80px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+        #content {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: rgba(0, 18, 0, 0.95);
+            padding: 10px 20px;
+        }
+
+        #child {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #child>button {
+            color: white;
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        #child>button:hover {
+            background-color: rgba(160, 252, 252, 0.15);
+            color: aqua;
+        }
+
+        /* SEARCH FORM */
+        form {
+            display: flex;
+            align-items: center;
+            box-shadow: 0px 0px 5px rgb(72, 224, 237);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        form>input {
+            width: 240px;
+            height: 36px;
+            border: none;
+            background-color: white;
+            padding-left: 14px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            outline: none;
+        }
+
+        form>input::placeholder {
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        form>button {
+            width: 60px;
+            height: 36px;
+            border: none;
+            background-color: rgb(72, 224, 237);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        form>button:hover {
+            background-color: aqua;
+        }
+
+        /* CARDS GRID */
+        .cards-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #div6 {
+            width: 340px;
+            background-color: rgba(78, 72, 72, 0.372);
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgb(226, 118, 118);
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #div6:hover {
+            transform: scale(0.95);
+        }
+
+        #div7 {
+            width: 100%;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        #div7>img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        #div8 {
+            padding: 10px;
+            flex-shrink: 0;
+        }
+
+        #div8>h1 {
+            font-size: clamp(14px, 2vw, 18px);
+            color: white;
+            line-height: 1.3;
+        }
+
+        #div9 {
+            padding: 0 10px;
+            color: rgba(240, 248, 255, 0.4);
+            flex: 1;
+        }
+
+        #div9>h1 {
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        hr {
+            margin: 0 10px;
+            background-color: rgb(124, 124, 124);
+        }
+
+        #div10 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        #div10>button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: rgb(16, 148, 248);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+
+        #div10>button:hover {
+            background-color: green;
+        }
+
+        #div10>button:active {
+            background-color: rgb(255, 0, 0);
+        }
+
+        #div11 {
+            width: 100%;
+            background-color: black;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #div11>h2 {
+            color: white;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        #head2::before {
+            content: 'By ';
+            color: rgb(88, 84, 84);
+        }
+
+        /* =====================
+           TABLET (max 900px)
+        ===================== */
+        @media (max-width: 900px) {
+            body {
+                padding-top: 100px;
+            }
+
+            #child {
+                justify-content: center;
+            }
+
+            form>input {
+                width: 180px;
+            }
+
+            #div6 {
+                width: 280px;
+            }
+        }
+
+        /* =====================
+           MOBILE (max 550px)
+        ===================== */
+        /* Replace your MOBILE media query (max 550px) #child styles with this */
+
+        @media (max-width: 550px) {
+            body {
+                padding-top: 90px;
+            }
+
+            #content {
+                padding: 8px 12px;
+            }
+
+            #child {
+                flex-direction: row;
+                /* keep buttons in a row */
+                align-items: center;
+                flex-wrap: wrap;
+                /* wrap to next line if needed */
+                justify-content: space-between;
+                gap: 6px;
+            }
+
+            form {
+                width: 100%;
+                /* search bar takes full top row */
+                order: -1;
+                /* always shows first */
+            }
+
+            form>input {
+                flex: 1;
+            }
+
+            #child>button {
+                font-size: 13px;
+                padding: 5px 10px;
+                flex: 1;
+                /* buttons share equal space */
+                text-align: center;
+            }
+
+            #child>button:hover {
+                background-color: aqua;
+                color: black;
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="child">
+            <form action="{% url 'search' %}">
+                <input type="search" name="searchbar" placeholder="search course name">
+                <button type="submit">search</button>
+            </form>
+            <button><a href="{% url 'logout' %}">Logout</a></button>
+            <button><a href="{% url 'getdata' %}">Home</a></button>
+            <button><a href="{% url 'profile' %}">Profile</a></button>
+            <button><a href="{% url 'cart' %}">Cart</a></button>
+        </div>
+    </div>
+
+    <div class="cards-wrapper">
+        {% for i in data %}
+        <div id="div6">
+            <div id="div7">
+                <img src="{{ i.c_image.url }}" alt="">
+            </div>
+            <div id="div8">
+                <h1>{{ i.c_name }}</h1>
+            </div>
+            <div id="div9">
+                <h1>{{ i.c_desc }}</h1>
+            </div>
+            <hr>
+            <div id="div10">
+                <button><a href="{% url 'addtocart' i.id %}">Add to cart</a></button>
+            </div>
+            <div id="div11">
+                <h2 id="head2">{{ i.c_author }}</h2>
+                <h2>₹{{ i.c_price }}</h2>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

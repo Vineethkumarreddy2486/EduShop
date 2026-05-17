@@ -1,0 +1,331 @@
+<!-- 
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration</title>
+    <style>
+        body{
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            background-image: radial-gradient(circle at bottom left,rgb(160, 252, 252),black 70%);
+        }
+        form{
+            border-radius: 10px;
+        }
+        #reg {
+            width: 300px;
+            height: 390px;
+            border-radius: 0px;
+            background-color: rgb(83, 79, 79);
+            margin-top: 100px;
+            margin-left: 40%;
+            padding-left: 20px;
+            box-shadow: 3px 3px 8px rgb(140, 215, 230),-3px -3px 8px black;
+        }
+        #inp1,#inp2,#inp3{
+            background-color: rgb(184, 249, 251);
+            border: none;
+            border-radius: 10px;
+        }
+        #inp1::placeholder,#inp2::placeholder,#inp3::placeholder{
+            padding-left: 5px;
+        }
+        #submit{
+            border: none;
+            border-radius: 20px;
+            margin-left: 85px;
+            background-color: rgba(48, 192, 217, 0.923);
+            padding: 10px 20px;
+            font-size: 15px;
+            color: rgb(9, 9, 9);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        #submit:hover{
+            background-color: green;
+            cursor: pointer;
+        }
+        #submit:active{
+            background-color: red;
+        }
+        label {
+            font-size: 20px;
+            color: white;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        nav,.div1,.div2{
+            background-color:  rgba(45, 45, 45, 0.116);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        nav{
+            width: 100%;
+            height: 50px;
+        }
+        .div1{
+            width: 95%;
+            height: 100%;
+        }
+        .div2{
+            width: 30%;
+            height: 100%;
+            float: right;
+        }
+        .div1>h1{
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(15deg,white,aqua);
+            background-position: 1900px;
+            transition: all 5s;
+            font-size: 30px;
+        }
+        .div2>a{
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(75deg,rgb(249, 248, 248),rgb(0, 234, 255));
+            background-position: 800px;
+            transition: all 1s;
+            font-size: 20px;
+        }
+        .div1>h1:hover,.div2>a:hover{
+            background-position: 0px;
+        }
+        .div2>a:hover{
+            scale: 1.1;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="div1"><h1>SineUp here before Sign In</h1></div>
+        <div class="div2">
+            <a href="{% url 'getdata' %}">--Go back</a>
+        </div>
+    </nav>
+
+    <div id="reg" style="border-radius: 10px;">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h1 style="background-color: rgba(48, 192, 217, 0.923); color: rgb(16, 15, 15); margin:0px; margin-bottom: 30px; margin-left: -20px;text-align: center;border-radius: 5px;font-size: 30px;padding: 10px 20px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                Sine Up</h1>
+            <label for="">username</label><br>
+            <input type="text" name="username" id="inp1" style="height: 30px;width: 90%;" placeholder="enter your username"><br><br>
+            <label for="">password</label><br>
+            <input type="password" name="password" id="inp2" style="height: 30px;width: 90%;" placeholder="enter your password"><br><br>
+
+            <label for="">Email</label><br>
+            <input type="email" name="email" id="inp3" style="height: 30px;width: 90%;" placeholder="enter your email"><br><br><br>
+            <a href="{% url 'login'%}"><button id="submit">Sineup</button></a>
+        </form>
+    </div>
+</body>
+
+</html> -->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body */
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to right, #5cc6c6, #000000);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px 30px;
+        }
+
+        nav h1 {
+            color: cyan;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        nav a {
+            color: cyan;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Form Container */
+        #reg {
+            margin: auto;
+            /* centers vertically & horizontally */
+            background: rgba(50, 50, 50, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 8px rgb(140, 215, 230);
+            width: 350px;
+            max-width: 90%;
+        }
+
+        /* Heading inside form */
+        #reg h1 {
+            margin-top: -20px;
+            margin-bottom: 25px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 28px;
+            padding: 12px;
+            color: white;
+        }
+
+        /* Labels */
+        #reg label {
+            color: white;
+            font-size: 16px;
+            display: block;
+        }
+
+        /* Inputs */
+        #reg input {
+            width: 100%;
+            height: 30px;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        /* Button */
+        #submit {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            background: #30c0d9;
+            color: black;
+            font-size: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #submit:hover {
+            opacity: 0.6;
+        }
+
+        #reg p{
+            color: white;
+
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav h1 {
+                font-size: 1.2rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            #reg {
+                width: 80%;
+                padding: 25px;
+            }
+
+            #reg h1 {
+                font-size: 24px;
+            }
+
+            #submit {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            nav h1 {
+                font-size: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            #reg {
+                width: 90%;
+                padding: 20px;
+            }
+
+            #reg h1 {
+                font-size: 20px;
+            }
+
+            #submit {
+                font-size: 15px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="div1">
+            <h1>SignUp here by filling all the fields</h1>
+        </div>
+        <div class="div2">
+            <a href="{% url 'getdata' %}">--Go back</a>
+        </div>
+    </nav>
+
+    <div id="reg" style="border-radius: 10px;">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h1>SignUp</h1>
+            <label for="">Username</label><br>
+            <input type="text" name="username" id="inp1" placeholder="enter your username"><br>
+            <label for="">Password</label><br>
+            <input type="password" name="password" id="inp2" placeholder="enter your password"><br>
+            <label for="">Email</label><br>
+            <input type="email" name="email" id="inp3" placeholder="enter your email"><br><br><br>
+            <a href="{% url 'login'%}"><button id="submit">SignUp</button></a>
+            <p>Already have an acoount ? <a href="{% url 'login'%}" style="color: cyan;">SignIn</a></p>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,440 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-height: 100vh;
+            background-color: black;
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 60px;
+            background-color: rgba(15, 14, 14, 0.441);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 0 20px;
+        }
+
+        #div1, #div2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        #div1 {
+            width: 40%;
+        }
+
+        #div2 {
+            width: 60%;
+            justify-content: space-evenly;
+        }
+
+        #div2 > div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #div1 > h1 {
+            color: transparent;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-image: linear-gradient(60deg, yellow, rgb(214, 13, 13), pink);
+            -webkit-background-clip: text;
+            background-position: 0px;
+            transition: all 5s;
+            font-size: 22px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        #div1 > h1:hover {
+            background-position: 3000px;
+        }
+
+        #btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        #btn:hover {
+            background-color: aqua;
+            color: black;
+            transform: scale(1.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* HERO SECTION */
+        .sec1 {
+            padding-top: 80px;
+        }
+
+        #div3 {
+            width: 100%;
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 4rem);
+            color: white;
+            line-height: 1.3;
+            padding: 40px 20px 20px;
+        }
+
+        #checkbtn {
+            background-color: rgb(29, 207, 207);
+            border: none;
+            font-size: clamp(14px, 2vw, 20px);
+            padding: 10px 30px;
+            border-radius: 10px;
+            letter-spacing: 1px;
+            margin: 20px auto;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: block;
+        }
+
+        #checkbtn:hover {
+            transform: scale(0.9);
+        }
+
+        #div4 {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 30px 20px;
+        }
+
+        #div4 > div {
+            font-size: clamp(14px, 2vw, 20px);
+            color: white;
+            letter-spacing: 1.5px;
+            text-align: center;
+        }
+
+        #sp {
+            font-weight: bold;
+            font-size: clamp(22px, 3vw, 30px);
+            display: block;
+        }
+
+        /* SEC 2 */
+        #div5 {
+            padding: 20px 0;
+        }
+
+        .sec2 > div {
+            width: 100%;
+            text-align: center;
+            font-size: clamp(16px, 3vw, 28px);
+            color: white;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        /* COURSES SECTION */
+        #head1 > h1 {
+            font-size: clamp(24px, 4vw, 40px);
+            font-family: cursive;
+            color: white;
+            font-weight: 700;
+            padding-left: 20px;
+        }
+
+        /* CARDS GRID */
+        .cards-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #div6 {
+            width: 340px;
+            background-color: rgba(78, 72, 72, 0.372);
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgb(226, 118, 118);
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #div6:hover {
+            transform: scale(0.95);
+        }
+
+        #div7 {
+            width: 100%;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        #div7 > img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        #div8 {
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        #div8 > h1 {
+            font-size: clamp(14px, 2vw, 18px);
+            color: white;
+            line-height: 1.3;
+        }
+
+        #div9 {
+            padding: 0 10px;
+            color: rgba(240, 248, 255, 0.4);
+            flex: 1;
+        }
+
+        #div9 > h1 {
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        #div10 {
+            height: 60px;
+        }
+
+        #div11 {
+            width: 100%;
+            background-color: black;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #div11 > h2 {
+            color: white;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        #head2::before {
+            content: 'By ';
+            color: rgb(88, 84, 84);
+        }
+
+        #search-bar > input {
+            width: 300px;
+            height: 40px;
+            background-color: red;
+            margin: 5px 8px;
+            border: none;
+            border-radius: 20px;
+            padding-left: 20px;
+            letter-spacing: 3px;
+            font-size: 20px;
+        }
+
+        /* =====================
+           TABLET (max 900px)
+        ===================== */
+        @media (max-width: 900px) {
+            nav {
+                height: auto;
+                flex-direction: column;
+                padding: 10px 16px;
+                gap: 8px;
+            }
+
+            #div1, #div2 {
+                width: 100%;
+            }
+
+            #div1 > h1 {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            #div2 {
+                flex-wrap: wrap;
+                gap: 6px;
+                justify-content: center;
+            }
+
+            .sec1 {
+                padding-top: 120px;
+            }
+
+            #div6 {
+                width: 280px;
+            }
+        }
+
+        /* =====================
+           MOBILE (max 550px)
+        ===================== */
+        @media (max-width: 550px) {
+            nav {
+                padding: 8px 12px;
+            }
+
+            #div1 > h1 {
+                font-size: 16px;
+            }
+
+            #btn {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+
+            .sec1 {
+                padding-top: 140px;
+            }
+
+            #div3 {
+                font-size: clamp(1.4rem, 7vw, 2rem);
+                padding: 20px 14px;
+            }
+
+            #checkbtn {
+                width: 90%;
+                font-size: 14px;
+                padding: 10px 16px;
+            }
+
+            #div4 {
+                flex-direction: column;
+                gap: 12px;
+                padding: 20px 16px;
+            }
+
+            .sec2 > div {
+                font-size: 16px;
+                padding: 16px;
+            }
+
+            #head1 > h1 {
+                padding-left: 16px;
+                font-size: 22px;
+            }
+
+            #div6 {
+                width: 100%;
+            }
+
+            .cards-wrapper {
+                padding: 12px;
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <nav>
+            <div id="div1">
+                <h1>Welcome to my school</h1>
+            </div>
+            <div id="div2">
+                <div><a href=""><button id="btn">Home</button></a></div>
+                <div><a href="{% url 'course' %}"><button id="btn">Courses</button></a></div>
+                <div><a href="{% url 'register' %}"><button id="btn">Sign Up</button></a></div>
+                <div><a href="{% url 'login' %}"><button id="btn">Sign In</button></a></div>
+            </div>
+        </nav>
+
+        <section class="sec1">
+            <div id="div3">We only <span style="color: rgb(29, 207, 207);">teach</span><br>What we are really <br>really good at.</div>
+            <center>
+                <div><a href="{% url 'getdata' %}"><button id="checkbtn">Check Courses Make an Impact</button></a></div>
+            </center>
+            <div id="div4">
+                <div><span id="sp">24k+</span>Students taught</div>
+                <div><span id="sp">9+</span>Instructors</div>
+                <div><span id="sp">320k+</span>Youtube subs...</div>
+            </div>
+        </section>
+
+        <section class="sec2">
+            <div id="div5">
+                <hr style="opacity: 0.1;">
+            </div>
+            <div>
+                <h2>We do whatever it takes to help you <br><span style="color:rgb(29, 207, 207);">understand the concepts.</span></h2>
+            </div>
+        </section>
+
+        <section class="sec3">
+            <br><br>
+            <div id="head1">
+                <h1>Courses Offered..</h1>
+            </div>
+            <br>
+            <div class="cards-wrapper">
+                {% for i in data %}
+                <div id="div6">
+                    <div id="div7">
+                        <img src="{{ i.c_image.url }}" alt="">
+                    </div>
+                    <div id="div8">
+                        <h1>{{ i.c_name }}</h1>
+                    </div>
+                    <div id="div9">
+                        <h1>{{ i.c_desc }}</h1>
+                    </div>
+                    <hr>
+                    <div id="div10"></div>
+                    <div id="div11">
+                        <h2 id="head2">{{ i.c_author }}</h2>
+                        <h2>₹{{ i.c_price }}</h2>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>

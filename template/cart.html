@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at bottom right, rgb(160, 252, 252), black 90%);
+            overflow: hidden auto;
+        }
+
+        table, tr, td {
+            border: none;
+            border-collapse: collapse;
+        }
+
+        tr {
+            box-shadow: 0px 0px 2px black;
+        }
+
+        table {
+            width: 100%;
+            text-align: center;
+        }
+
+        td {
+            width: 80px;
+            padding: 8px;
+        }
+
+        #dec, #inc, #rbtn {
+            font-size: 18px;
+            padding: 1px 5px;
+            background-color: transparent;
+            border: none;
+            font-weight: bold;
+        }
+
+        #dec:hover, #inc:hover, #rbtn:hover {
+            cursor: pointer;
+        }
+
+        #q {
+            font-size: 18px;
+            padding: 1px 15px;
+            background-color: transparent;
+            border: none;
+        }
+
+        nav {
+            width: 100%;
+            height: 70px;
+            background-color: rgba(45, 45, 45, 0.116);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 20px;
+        }
+
+        nav>h1, nav>a {
+            -webkit-background-clip: text;
+            font-style: italic;
+            color: transparent;
+            background-image: linear-gradient(15deg, white, aqua);
+            background-position: 1600px;
+            transition: all 5s;
+        }
+
+        nav>h1 {
+            font-size: 40px;
+            margin-left: 250px;
+        }
+
+        nav>h1:hover, nav>a:hover {
+            background-position: 0px;
+        }
+
+        nav>a {
+            font-size: 20px;
+            text-decoration: none;
+            margin-left: 400px;
+        }
+
+        table img {
+            width: 180px;
+            height: 100px;
+            border-radius: 15px;
+        }
+
+        h3 {
+            color: white;
+        }
+
+        /* =====================
+           TABLET  (max 900px)
+        ===================== */
+        @media (max-width: 900px) {
+            nav>h1 {
+                font-size: 28px;
+                margin-left: 0;
+            }
+
+            nav>a {
+                font-size: 16px;
+                margin-left: 20px;
+            }
+
+            table img {
+                width: 120px;
+                height: 70px;
+            }
+
+            td {
+                font-size: 13px;
+                padding: 6px;
+            }
+
+            #dec, #inc, #rbtn, #q {
+                font-size: 14px;
+            }
+        }
+
+        /* =====================
+           MOBILE  (max 600px)
+        ===================== */
+        @media (max-width: 600px) {
+            nav {
+                height: auto;
+                justify-content: space-between;
+                padding: 12px 16px;
+                margin-bottom: 10px;
+            }
+
+            nav>h1 {
+                font-size: 20px;
+                margin-left: 0;
+            }
+
+            nav>a {
+                font-size: 14px;
+                margin-left: 0;
+            }
+
+            table, thead, tbody, tr, td {
+                display: block;
+                width: 100%;
+            }
+
+            thead {
+                display: none !important;
+            }
+
+            tr {
+                margin-bottom: 16px;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 12px;
+                box-shadow: 0 0 8px rgba(160, 252, 252, 0.15);
+            }
+
+            td {
+                text-align: left;
+                padding: 10px 12px;
+                padding-top: 28px;
+                width: 100%;
+                color: white;
+                font-size: 14px;
+                position: relative;
+            }
+
+            td:nth-child(1)::before { content: "📷 Image"; display: block; font-size: 11px; color: aqua; margin-bottom: 6px; }
+            td:nth-child(2)::before { content: "📘 Name"; display: block; font-size: 11px; color: aqua; margin-bottom: 6px; }
+            td:nth-child(3)::before { content: "📝 Description"; display: block; font-size: 11px; color: aqua; margin-bottom: 6px; }
+            td:nth-child(4)::before { content: "💰 Price"; display: block; font-size: 11px; color: aqua; margin-bottom: 6px; }
+            td:nth-child(5)::before { content: "🔢 Quantity"; display: block; font-size: 11px; color: aqua; margin-bottom: 6px; }
+            td:nth-child(6)::before { content: "🗑️ Action"; display: block; font-size: 11px; color: aqua; margin-bottom: 6px; }
+
+            table img {
+                width: 100%;
+                height: 160px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            #dec, #inc, #rbtn, #q {
+                font-size: 16px;
+                padding: 4px 10px;
+            }
+
+            h3 {
+                font-size: 15px;
+                margin-left: 0 !important;
+                text-align: right;
+                padding-right: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav><h1>This is your cart</h1><a href="{% url 'course' %}">--Add more</a></nav>
+    <table>
+        <thead>
+            <tr style="height: 40px; font-weight: bold;">
+                <td>Image</td>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td>Button</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>
+                    <img style="width: 180px;height: 100px;border-radius: 15px;" src="{{ i.courses.c_image.url }}" alt="">
+                </td>
+                <td>{{ i.courses.c_name }}</td>
+                <td>{{ i.courses.c_desc }}</td>
+                <td>₹{{ i.courses.c_price }}</td>
+                <td>
+                    <a href="{% url 'cartremove' i.id %}"><button id="dec">-</button></a>
+                    <button id="q">{{ i.quantity }}</button>
+                    <a href="{% url 'addtocart' i.courses.id %}"><button id="inc">+</button></a>
+                </td>
+                <td>
+                    <a href="{% url 'delcart' i.id %}"><button id="rbtn">Remove</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <h3 style="margin-left: 950px;">Total amount : {{total}}</h3><br><br>
+</body>
+
+</html>

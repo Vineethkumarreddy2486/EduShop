@@ -1,0 +1,580 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin-left: 30px;
+            margin-top: 40px;
+            background-image: linear-gradient(rgb(0, 18, 0), black);
+            float: left;
+            width: 100%;
+            height: 2000px;
+            overflow: hidden auto;
+        }
+
+        #contain {
+            width: 350px;
+            height: 600px;
+            background-color: rgba(50, 47, 47, 0.989);
+            float: left;
+            margin-right: 20px;
+
+        }
+
+        .container {
+            border-radius: 10px;
+
+        }
+
+        #contain>img {
+            width: 100%;
+            height: 200px;
+        }
+
+        #contain>.head {
+            margin-left: 20px;
+            margin-right: 10px;
+            color: white;
+            font-size: 25px;
+        }
+
+        .hed {
+            margin-left: 20px;
+            margin-right: 10px;
+            font-size: 13px;
+            color: rgb(124, 124, 124);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+
+        hr {
+            background-color: rgb(124, 124, 124);
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .div1 {
+            height: 100px;
+        }
+
+        .div2 {
+            width: 100%;
+            height: 50px;
+            background-color: black;
+            margin-top: 50px;
+            color: white;
+        }
+
+        #h {
+
+            font-size: 17px;
+            float: left;
+            padding-bottom: 10px;
+
+        }
+
+        #h::before {
+            content: "By ";
+            color: rgb(112, 110, 108);
+            font-size: 15px;
+            width: fit-content;
+
+
+        }
+
+        #h1 {
+            float: right;
+            width: fit-content;
+
+
+        }
+
+        #content {
+            width: 100%;
+            height: 100px;
+        }
+
+        #child>button {
+            width: 150px;
+            height: 50px;
+            color: white;
+            background-color: transparent;
+            border: none;
+            float: right;
+            font-size: 25px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        #child {
+            width: 100%;
+            float: right;
+            position: absolute;
+
+        }
+
+        #child>h1 {
+            color: white;
+            float: left;
+            font-family: Brush Script MT;
+            font-size: 40px;
+            width: fit-content;
+            margin: 0;
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+        }
+
+        #head1>h1 {
+            font-size: 40px;
+            font-family: cursive;
+            color: white;
+            font-weight: 700;
+            padding-left: 50px;
+        }
+
+        #div6 {
+            margin-left: 20px;
+            margin-right: 10px;
+            font-size: 10px;
+            line-height: 25px;
+            color: white;
+            background-color: rgba(78, 72, 72, 0.372);
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgb(226, 118, 118);
+            transition: all 1s;
+            text-align: center;
+            /* margin-bottom: 25px; */
+            margin-top: 40px;
+        }
+
+        #div6:hover {
+            transform: scale(0.9);
+            /* z-index: -1; */
+        }
+
+        #div8 {
+            font-size: 15px;
+        }
+
+        #head2::before {
+            content: 'By ';
+            color: rgb(88, 84, 84);
+        }
+
+    #div10{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #div10>button{
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background-color: rgb(16, 148, 248);
+        cursor: pointer;
+        transition: all 1s;
+    }
+    #div10>button:hover{
+        background-color: green;
+    }
+    #div10>button:active{
+        background-color: rgb(255, 0, 0);
+    }
+    form>input,form>button{
+        width: 300px;
+        height: 30px;
+        border: none;
+        border-radius: 2px;
+        background-color: white;
+    }
+    form>button{
+        width: 60px;
+    }
+    form>button:hover{
+        cursor: pointer;
+    }
+    form{
+        margin-top: 13px;
+        margin-left: 30px;
+        display: inline-block;
+        box-shadow: 0px 0px 5px rgb(72, 224, 237);
+    }
+    form>input::placeholder{
+        padding-left: 30px;
+        letter-spacing: 1px;
+        font-size: 12px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="child" style="margin-bottom: 50px;align-items: center;">
+            <h1>Results</h1>
+            <button><a href="{% url 'course' %}">Courses</a></button>
+            <button><a href="{% url 'getdata' %}">Home</a></button>
+            <button><a href="{% url 'profile' %}">Profile</a></button>
+            <button><a href="{% url 'cart' %}">Cart</a></button>
+        </div>
+    </div>
+
+
+    {% for i in course %}
+    <div id="div6" style="width: 380px;height: 590px;float: left;">
+        <div id="div7" style="width: 100%;height: 200px;">
+            <img style="width: 100%;height: 100%;border-radius: 10px;" src="{{ i.c_image.url }}" alt="">
+        </div><br>
+        <div id="div8" style="width: 100%;height: 70px;line-height: 28px;">
+            <h1>{{ i.c_name }}</h1>
+        </div>
+        <div id="div9" style="width: 100%;height: 100px;color: rgba(240, 248, 255, 0.155);">
+            <h1>{{ i.c_desc }}</h1>
+        </div>
+        <hr>
+        <div id="div10" style="width: 100%;height: 100px;color: black;"><button><a href="{% url 'addtocart' i.id %}">Add to cart</a> </button></div>
+        <div id="div11" style="width: 100%;height: 30px;background-color: black;padding-top: 10px;">
+            <h2 style="float: left;" id="head2">{{ i.c_author }}</h2>
+            <h2 style="float: right;">₹{{ i.c_price }}</h2>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</body>
+
+</html>
+
+
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            padding-top: 80px;
+            background-image: linear-gradient(rgb(0, 18, 0), black);
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden auto;
+        }
+
+        #content {
+            width: 100%;
+            height: 70px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: rgba(0, 18, 0, 0.95);
+        }
+
+        #child {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        #child > h1 {
+            color: white;
+            font-family: Brush Script MT;
+            font-size: 40px;
+            width: fit-content;
+            margin: 0;
+        }
+
+        #child > button {
+            color: white;
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            font-family: 'Times New Roman', Times, serif;
+            cursor: pointer;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* CARDS GRID */
+        .cards-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #div6 {
+            width: 350px;
+            height: 590px;
+            background-color: rgba(78, 72, 72, 0.372);
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgb(226, 118, 118);
+            transition: all 1s;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #div6:hover {
+            transform: scale(0.97);
+        }
+
+        #div6 > #div7 {
+            width: 100%;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        #div6 > #div7 > img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        #div8 {
+            font-size: 15px;
+            padding: 10px;
+            flex-shrink: 0;
+        }
+
+        #div8 > h1 {
+            font-size: 18px;
+            color: white;
+            line-height: 28px;
+        }
+
+        #div9 {
+            padding: 0 10px;
+            color: rgba(240, 248, 255, 0.5);
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #div9 > h1 {
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        hr {
+            margin: 0 10px;
+            background-color: rgb(124, 124, 124);
+        }
+
+        #div10 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        #div10 > button {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: rgb(16, 148, 248);
+            cursor: pointer;
+            transition: all 1s;
+            font-size: 15px;
+        }
+
+        #div10 > button:hover {
+            background-color: green;
+        }
+
+        #div10 > button:active {
+            background-color: rgb(255, 0, 0);
+        }
+
+        #div11 {
+            width: 100%;
+            height: 40px;
+            background-color: black;
+            padding: 8px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #head2 {
+            color: white;
+            font-size: 14px;
+        }
+
+        #head2::before {
+            content: 'By ';
+            color: rgb(88, 84, 84);
+        }
+
+        #div11 > h2 {
+            color: white;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        form {
+            margin-top: 13px;
+            margin-left: 30px;
+            display: inline-block;
+            box-shadow: 0px 0px 5px rgb(72, 224, 237);
+        }
+
+        form > input, form > button {
+            width: 300px;
+            height: 30px;
+            border: none;
+            border-radius: 2px;
+            background-color: white;
+        }
+
+        form > button {
+            width: 60px;
+            cursor: pointer;
+        }
+
+        form > input::placeholder {
+            padding-left: 30px;
+            letter-spacing: 1px;
+            font-size: 12px;
+        }
+
+        /* =====================
+           TABLET (max 768px)
+        ===================== */
+        @media (max-width: 768px) {
+            #child > h1 {
+                font-size: 28px;
+            }
+
+            #child > button {
+                font-size: 14px;
+            }
+
+            #div6 {
+                width: 300px;
+                height: auto;
+                min-height: 520px;
+            }
+        }
+
+        /* =====================
+           MOBILE (max 480px)
+        ===================== */
+        @media (max-width: 480px) {
+            body {
+                padding-top: 120px;
+            }
+
+            #content {
+                height: auto;
+                padding: 10px 0;
+            }
+
+            #child {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 16px;
+                gap: 6px;
+            }
+
+            #child > h1 {
+                font-size: 26px;
+            }
+
+            #child > button {
+                font-size: 13px;
+            }
+
+            .cards-wrapper {
+                padding: 12px;
+                gap: 14px;
+            }
+
+            #div6 {
+                width: 100%;
+                height: auto;
+                min-height: unset;
+            }
+
+            #div7 {
+                height: 180px !important;
+            }
+
+            #div8 > h1 {
+                font-size: 16px;
+            }
+
+            #div10 > button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="child">
+            <h1>Results</h1>
+            <button><a href="{% url 'course' %}">Courses</a></button>
+            <button><a href="{% url 'getdata' %}">Home</a></button>
+            <button><a href="{% url 'profile' %}">Profile</a></button>
+            <button><a href="{% url 'cart' %}">Cart</a></button>
+        </div>
+    </div>
+
+    <div class="cards-wrapper">
+        {% for i in course %}
+        <div id="div6">
+            <div id="div7">
+                <img src="{{ i.c_image.url }}" alt="">
+            </div>
+            <div id="div8">
+                <h1>{{ i.c_name }}</h1>
+            </div>
+            <div id="div9">
+                <h1>{{ i.c_desc }}</h1>
+            </div>
+            <hr>
+            <div id="div10">
+                <button><a href="{% url 'addtocart' i.id %}">Add to cart</a></button>
+            </div>
+            <div id="div11">
+                <h2 id="head2">{{ i.c_author }}</h2>
+                <h2>₹{{ i.c_price }}</h2>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html> -->
