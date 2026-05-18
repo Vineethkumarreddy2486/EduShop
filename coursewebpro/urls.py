@@ -36,4 +36,4 @@ urlpatterns = [
     path('search/',search_bar,name='search')
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_DIR)
+# urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_DIR)   not needed because we are using whitenoise to serve static files in production.
