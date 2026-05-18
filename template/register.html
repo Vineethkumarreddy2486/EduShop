@@ -1,137 +1,3 @@
-<!-- 
-
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>registration</title>
-    <style>
-        body{
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-            background-image: radial-gradient(circle at bottom left,rgb(160, 252, 252),black 70%);
-        }
-        form{
-            border-radius: 10px;
-        }
-        #reg {
-            width: 300px;
-            height: 390px;
-            border-radius: 0px;
-            background-color: rgb(83, 79, 79);
-            margin-top: 100px;
-            margin-left: 40%;
-            padding-left: 20px;
-            box-shadow: 3px 3px 8px rgb(140, 215, 230),-3px -3px 8px black;
-        }
-        #inp1,#inp2,#inp3{
-            background-color: rgb(184, 249, 251);
-            border: none;
-            border-radius: 10px;
-        }
-        #inp1::placeholder,#inp2::placeholder,#inp3::placeholder{
-            padding-left: 5px;
-        }
-        #submit{
-            border: none;
-            border-radius: 20px;
-            margin-left: 85px;
-            background-color: rgba(48, 192, 217, 0.923);
-            padding: 10px 20px;
-            font-size: 15px;
-            color: rgb(9, 9, 9);
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-        #submit:hover{
-            background-color: green;
-            cursor: pointer;
-        }
-        #submit:active{
-            background-color: red;
-        }
-        label {
-            font-size: 20px;
-            color: white;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-        nav,.div1,.div2{
-            background-color:  rgba(45, 45, 45, 0.116);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        nav{
-            width: 100%;
-            height: 50px;
-        }
-        .div1{
-            width: 95%;
-            height: 100%;
-        }
-        .div2{
-            width: 30%;
-            height: 100%;
-            float: right;
-        }
-        .div1>h1{
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(15deg,white,aqua);
-            background-position: 1900px;
-            transition: all 5s;
-            font-size: 30px;
-        }
-        .div2>a{
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(75deg,rgb(249, 248, 248),rgb(0, 234, 255));
-            background-position: 800px;
-            transition: all 1s;
-            font-size: 20px;
-        }
-        .div1>h1:hover,.div2>a:hover{
-            background-position: 0px;
-        }
-        .div2>a:hover{
-            scale: 1.1;
-        }
-
-    </style>
-</head>
-
-<body>
-
-    <nav>
-        <div class="div1"><h1>SineUp here before Sign In</h1></div>
-        <div class="div2">
-            <a href="{% url 'getdata' %}">--Go back</a>
-        </div>
-    </nav>
-
-    <div id="reg" style="border-radius: 10px;">
-        <form action="" method="post">
-            {% csrf_token %}
-            <h1 style="background-color: rgba(48, 192, 217, 0.923); color: rgb(16, 15, 15); margin:0px; margin-bottom: 30px; margin-left: -20px;text-align: center;border-radius: 5px;font-size: 30px;padding: 10px 20px;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                Sine Up</h1>
-            <label for="">username</label><br>
-            <input type="text" name="username" id="inp1" style="height: 30px;width: 90%;" placeholder="enter your username"><br><br>
-            <label for="">password</label><br>
-            <input type="password" name="password" id="inp2" style="height: 30px;width: 90%;" placeholder="enter your password"><br><br>
-
-            <label for="">Email</label><br>
-            <input type="email" name="email" id="inp3" style="height: 30px;width: 90%;" placeholder="enter your email"><br><br><br>
-            <a href="{% url 'login'%}"><button id="submit">Sineup</button></a>
-        </form>
-    </div>
-</body>
-
-</html> -->
-
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -148,7 +14,6 @@
             box-sizing: border-box;
         }
 
-        /* Body */
         body {
             height: 100vh;
             display: flex;
@@ -157,7 +22,6 @@
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
-        /* Navbar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -182,19 +46,16 @@
             text-decoration: underline;
         }
 
-        /* Form Container */
         #reg {
             margin: auto;
-            /* centers vertically & horizontally */
             background: rgba(50, 50, 50, 0.95);
             padding: 40px;
             border-radius: 10px;
             box-shadow: 3px 3px 8px rgb(140, 215, 230);
-            width: 350px;
+            width: 370px;
             max-width: 90%;
         }
 
-        /* Heading inside form */
         #reg h1 {
             margin-top: -20px;
             margin-bottom: 25px;
@@ -205,27 +66,86 @@
             color: white;
         }
 
-        /* Labels */
+        .field-group {
+            position: relative;
+            margin-bottom: 6px;
+        }
+
         #reg label {
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             display: block;
+            margin-bottom: 5px;
         }
 
-        /* Inputs */
         #reg input {
             width: 100%;
-            height: 30px;
-            padding: 10px;
+            height: 38px;
+            padding: 8px 36px 8px 10px;
             border-radius: 8px;
-            border: none;
+            border: 2px solid transparent;
             outline: none;
-            margin-bottom: 20px;
             font-size: 15px;
+            background: #b8f9fb;
+            transition: border-color 0.25s, background 0.25s;
         }
 
-        /* Button */
+        #reg input:focus {
+            border-color: #30c0d9;
+            background: #d6fdff;
+        }
+
+        #reg input.valid {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        #reg input.invalid {
+            border-color: #dc3545;
+            background: #fde8e8;
+        }
+
+        .field-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            pointer-events: none;
+            display: none;
+        }
+
+        .error-msg {
+            color: #ff6b6b;
+            font-size: 12px;
+            min-height: 16px;
+            margin-bottom: 10px;
+            display: block;
+            padding-left: 2px;
+        }
+
+        #strength-bar-wrap {
+            display: none;
+            margin-bottom: 4px;
+        }
+
+        #strength-bar-wrap span {
+            display: block;
+            font-size: 11px;
+            color: #ccc;
+            margin-bottom: 3px;
+        }
+
+        #strength-bar {
+            height: 5px;
+            border-radius: 4px;
+            background: #555;
+            transition: width 0.3s, background 0.3s;
+            width: 0%;
+        }
+
         #submit {
+            margin-top: 10px;
             margin-bottom: 10px;
             width: 100%;
             padding: 10px;
@@ -235,70 +155,76 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: opacity 0.3s, background 0.3s;
+            font-family: inherit;
         }
 
         #submit:hover {
-            opacity: 0.6;
+            opacity: 0.75;
         }
 
-        #reg p{
+        #submit:disabled {
+            background: #555;
+            color: #aaa;
+            cursor: not-allowed;
+            opacity: 1;
+        }
+
+        #reg p {
             color: white;
-
+            font-size: 14px;
+            margin-top: 4px;
         }
 
-        /* Responsive Design */
+        #reg p a {
+            color: cyan;
+        }
+
+        .req-list {
+            display: none;
+            background: rgba(0,0,0,0.7);
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .req-list li {
+            list-style: none;
+            color: #aaa;
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .req-list li.met {
+            color: #28a745;
+        }
+
+        .req-list li::before {
+            content: '✗';
+            color: #dc3545;
+        }
+
+        .req-list li.met::before {
+            content: '✓';
+            color: #28a745;
+        }
+
         @media (max-width: 768px) {
-            nav h1 {
-                font-size: 1.2rem;
-            }
-
-            nav a {
-                font-size: 0.9rem;
-            }
-
-            #reg {
-                width: 80%;
-                padding: 25px;
-            }
-
-            #reg h1 {
-                font-size: 24px;
-            }
-
-            #submit {
-                font-size: 16px;
-            }
+            nav h1 { font-size: 1.2rem; }
+            nav a { font-size: 0.9rem; }
+            #reg { width: 80%; padding: 25px; }
+            #reg h1 { font-size: 24px; }
         }
 
         @media (max-width: 480px) {
-            nav {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-
-            nav h1 {
-                font-size: 1rem;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            #reg {
-                width: 90%;
-                padding: 20px;
-            }
-
-            #reg h1 {
-                font-size: 20px;
-            }
-
-            #submit {
-                font-size: 15px;
-                padding: 10px;
-            }
+            nav { flex-direction: column; gap: 10px; text-align: center; }
+            nav h1 { font-size: 1rem; }
+            nav a { font-size: 0.8rem; }
+            #reg { width: 90%; padding: 20px; }
+            #reg h1 { font-size: 20px; }
         }
     </style>
 </head>
@@ -314,18 +240,215 @@
         </div>
     </nav>
 
-    <div id="reg" style="border-radius: 10px;">
-        <form action="" method="post">
+    <div id="reg">
+        <form action="" method="post" id="signupForm" novalidate>
             {% csrf_token %}
             <h1>SignUp</h1>
-            <label for="">Username</label><br>
-            <input type="text" name="username" id="inp1" placeholder="enter your username"><br>
-            <label for="">Password</label><br>
-            <input type="password" name="password" id="inp2" placeholder="enter your password"><br>
-            <label for="">Email</label><br>
-            <input type="email" name="email" id="inp3" placeholder="enter your email"><br><br><br>
-            <a href="{% url 'login'%}"><button id="submit">SignUp</button></a>
-            <p>Already have an acoount ? <a href="{% url 'login'%}" style="color: cyan;">SignIn</a></p>
+
+            <!-- Username -->
+            <label for="inp1">Username</label>
+            <div class="field-group">
+                <input type="text" name="username" id="inp1" placeholder="enter your username" autocomplete="off">
+                <span class="field-icon" id="icon-username"></span>
+            </div>
+            <span class="error-msg" id="err-username"></span>
+
+            <!-- Password -->
+            <label for="inp2">Password</label>
+            <div class="field-group">
+                <input type="password" name="password" id="inp2" placeholder="enter your password" autocomplete="new-password">
+                <span class="field-icon" id="icon-password"></span>
+            </div>
+            <div id="strength-bar-wrap">
+                <span id="strength-label">Password strength</span>
+                <div id="strength-bar"></div>
+            </div>
+            <ul class="req-list" id="pwd-reqs">
+                <li id="req-len">At least 8 characters</li>
+                <li id="req-upper">One uppercase letter</li>
+                <li id="req-lower">One lowercase letter</li>
+                <li id="req-num">One number</li>
+                <li id="req-special">One special character (!@#$…)</li>
+            </ul>
+            <span class="error-msg" id="err-password"></span>
+
+            <!-- Email -->
+            <label for="inp3">Email</label>
+            <div class="field-group">
+                <input type="email" name="email" id="inp3" placeholder="enter your email" autocomplete="off">
+                <span class="field-icon" id="icon-email"></span>
+            </div>
+            <span class="error-msg" id="err-email"></span>
+
+            <button type="submit" id="submit">SignUp</button>
+            <p>Already have an account? <a href="{% url 'login' %}">SignIn</a></p>
         </form>
     </div>
+
+    <script>
+        const inp1 = document.getElementById('inp1');
+        const inp2 = document.getElementById('inp2');
+        const inp3 = document.getElementById('inp3');
+
+        function setValid(input, iconId) {
+            input.classList.remove('invalid');
+            input.classList.add('valid');
+            const icon = document.getElementById(iconId);
+            icon.textContent = '✔';
+            icon.style.color = '#28a745';
+            icon.style.display = 'block';
+        }
+
+        function setInvalid(input, iconId) {
+            input.classList.remove('valid');
+            input.classList.add('invalid');
+            const icon = document.getElementById(iconId);
+            icon.textContent = '✖';
+            icon.style.color = '#dc3545';
+            icon.style.display = 'block';
+        }
+
+        function showError(id, msg) {
+            document.getElementById(id).textContent = msg;
+        }
+
+        function clearError(id) {
+            document.getElementById(id).textContent = '';
+        }
+
+        /* ── Username ── */
+        function validateUsername() {
+            const val = inp1.value.trim();
+            if (val === '') {
+                setInvalid(inp1, 'icon-username');
+                showError('err-username', 'Username is required.');
+                return false;
+            }
+            if (val.length < 3) {
+                setInvalid(inp1, 'icon-username');
+                showError('err-username', 'Username must be at least 3 characters.');
+                return false;
+            }
+            if (val.length > 20) {
+                setInvalid(inp1, 'icon-username');
+                showError('err-username', 'Username must be at most 20 characters.');
+                return false;
+            }
+            if (!/^[a-zA-Z0-9_]+$/.test(val)) {
+                setInvalid(inp1, 'icon-username');
+                showError('err-username', 'Only letters, numbers, and underscores allowed.');
+                return false;
+            }
+            setValid(inp1, 'icon-username');
+            clearError('err-username');
+            return true;
+        }
+
+        /* ── Password + Strength ── */
+        const checks = {
+            len:     { el: document.getElementById('req-len'),     test: v => v.length >= 8 },
+            upper:   { el: document.getElementById('req-upper'),   test: v => /[A-Z]/.test(v) },
+            lower:   { el: document.getElementById('req-lower'),   test: v => /[a-z]/.test(v) },
+            num:     { el: document.getElementById('req-num'),     test: v => /[0-9]/.test(v) },
+            special: { el: document.getElementById('req-special'), test: v => /[!@#$%^&*(),.?":{}|<>_\-]/.test(v) },
+        };
+
+        const strengthBar   = document.getElementById('strength-bar');
+        const strengthLabel = document.getElementById('strength-label');
+        const strengthWrap  = document.getElementById('strength-bar-wrap');
+        const reqList       = document.getElementById('pwd-reqs');
+
+        const strengthLevels = [
+            { label: 'Very Weak',   color: '#dc3545', pct: '20%' },
+            { label: 'Weak',        color: '#fd7e14', pct: '40%' },
+            { label: 'Fair',        color: '#ffc107', pct: '60%' },
+            { label: 'Strong',      color: '#20c997', pct: '80%' },
+            { label: 'Very Strong', color: '#28a745', pct: '100%'},
+        ];
+
+        function validatePassword() {
+            const val = inp2.value;
+            if (val === '') {
+                setInvalid(inp2, 'icon-password');
+                showError('err-password', 'Password is required.');
+                strengthWrap.style.display = 'none';
+                reqList.style.display = 'none';
+                return false;
+            }
+
+            strengthWrap.style.display = 'block';
+            reqList.style.display = 'block';
+
+            let passed = 0;
+            for (const key in checks) {
+                const ok = checks[key].test(val);
+                checks[key].el.classList.toggle('met', ok);
+                if (ok) passed++;
+            }
+
+            const lvl = strengthLevels[passed - 1] || strengthLevels[0];
+            strengthBar.style.width = lvl.pct;
+            strengthBar.style.background = lvl.color;
+            strengthLabel.textContent = 'Strength: ' + lvl.label;
+
+            if (passed < 5) {
+                setInvalid(inp2, 'icon-password');
+                showError('err-password', 'Password does not meet all requirements.');
+                return false;
+            }
+
+            setValid(inp2, 'icon-password');
+            clearError('err-password');
+            return true;
+        }
+
+        /* ── Email ── */
+        function validateEmail() {
+            const val = inp3.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+            if (val === '') {
+                setInvalid(inp3, 'icon-email');
+                showError('err-email', 'Email is required.');
+                return false;
+            }
+            if (!emailRegex.test(val)) {
+                setInvalid(inp3, 'icon-email');
+                showError('err-email', 'Enter a valid email address (e.g. user@example.com).');
+                return false;
+            }
+            setValid(inp3, 'icon-email');
+            clearError('err-email');
+            return true;
+        }
+
+        /* ── Listeners ── */
+        inp1.addEventListener('input', validateUsername);
+        inp1.addEventListener('blur',  validateUsername);
+
+        inp2.addEventListener('focus', () => {
+            if (inp2.value === '') {
+                strengthWrap.style.display = 'block';
+                reqList.style.display = 'block';
+            }
+        });
+        inp2.addEventListener('input', validatePassword);
+        inp2.addEventListener('blur',  validatePassword);
+
+        inp3.addEventListener('input', validateEmail);
+        inp3.addEventListener('blur',  validateEmail);
+
+        /* ── Submit ── */
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            const u  = validateUsername();
+            const p  = validatePassword();
+            const em = validateEmail();
+            if (!u || !p || !em) {
+                e.preventDefault();
+                const firstInvalid = document.querySelector('input.invalid');
+                if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    </script>
+
 </body>
+</html>

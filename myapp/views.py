@@ -30,19 +30,22 @@ def register(request):
     return render(request,'register.html',{'data':r})
 
 def login_view(request):
-    l=Loginform()
-    if request.method=='POST':
-        form=Loginform(request.POST)
+    if request.method == 'POST':
+        form = Loginform(request.POST)
         if form.is_valid():
-            username=form.cleaned_data['username']
-            password=form.cleaned_data['password'] 
-            user=authenticate(username=username,password=password)
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
             if user:
-                login(request,user)
+                login(request, user)
                 return redirect('course')
             else:
-                return HttpResponse('invalid credentials')
-    return render(request,'login.html')
+                return render(request, 'login.html', {
+                    'error': 'Invalid username or password'
+                })
+    else:
+        form = Loginform()
+    return render(request, 'login.html', {'form': form})
 
 def logout_view(request):
     logout(request)
