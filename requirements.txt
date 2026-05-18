@@ -74,7 +74,7 @@ python-dateutil==2.9.0.post0
 python-json-logger==3.3.0
 pytz==2025.2
 # pywin32==311    it works on windows but not on linux, so I have removed it and added pywinpty which is a dependency for ipykernel
-pywinpty==3.0.0
+# pywinpty==3.0.0
 PyYAML==6.0.2
 pyzmq==27.1.0
 referencing==0.36.2
