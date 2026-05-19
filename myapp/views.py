@@ -21,13 +21,16 @@ def course_view(request):
     return render(request,'course_view.html',{'data':data})
 
 def register(request):
-    r=Registrationform()
-    if request.method=='POST':
-        form=Registrationform(request.POST)
+    if request.method == 'POST':
+        form = Registrationform(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
-    return render(request,'register.html',{'data':r})
+        else:
+            print(form.errors)
+    else:
+        form = Registrationform()
+    return render(request, 'register.html', {'data': form})
 
 def login_view(request):
     if request.method == 'POST':
